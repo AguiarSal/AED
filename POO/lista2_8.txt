@@ -1,0 +1,1 @@
+É o reaproveitamento de uma classe superior, ou seja, seus atributos e métodos, feito por outra subclasse com o propósito de diminuir o tamanho e simplificar o código.
