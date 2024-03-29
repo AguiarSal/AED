@@ -1,0 +1,1 @@
+Atributos são as características gerais de um objeto e métodos são as ações realizadas por eles. Por exemplo, uma classe de nome "violão" têm atributos como -marca, -material, -preco e métodos como +dedilhar e +afinar.
