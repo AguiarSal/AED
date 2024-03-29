@@ -1,0 +1,7 @@
+a. É a forma de programação baseada em objetos com sua classe e suas respectivas características, divididas em atributos (definidores da classe) e métodos (ações da classe). 
+
+b. Uma classe é um conjunto de objetos com características e modo de funcionamento em comum. Por exemplo, "veículos" pode ser uma classe para um objeto "carro" e um objeto "moto".
+
+c. Instância é a criação do objeto em si, com suas devidas propriedades definidas na classe. Pode-se usar, como um exemplo, a criação de um objeto "a1" para uma classe "aluno" como uma instânciação.
+
+d. Uma entidade com comportamento definido por uma classe que ajuda na resolução de problemas.
