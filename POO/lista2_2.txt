@@ -1,0 +1,1 @@
+A principal diferença entre class e struct está na visibilidade. A visibilidade no struct é sempre pública, por outro lado, o class possui os modificadores de visibilidade que são divididos em três: +public, -private e #protected, e determinam como os atributos e métodos poderão ser trabalhados.  
