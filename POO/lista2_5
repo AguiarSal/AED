@@ -1,0 +1,1 @@
+O polimorfismo é aplicado através dos métodos virtuais e consiste em reaproveitar os métodos da classe filha invocando-os por meio da classe mãe. Já a herança, é o reaproveitamento da classe em si, com seus métodos e atributos.
