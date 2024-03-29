@@ -1,0 +1,4 @@
+Métodos getters são utilizados por clientes checarem a informação, com relação aos atributos, protegida ou privada.
+Métodos setters são utilizados por clientes para modificar informação protegida ou privada.
+Por exemplo, pode-se criar um método set para conseguir o nome de alguém: void setname(string x){name=x} ; e, posteriormente na main: y.setname("Pedro");
+Com o get é parecido, a diferença é que ele não recebe paramêtros. Vejamos seguindo o mesmo exemplo: string getname(){return name} ; e, na main: y.getname(); assim, por fim, obtendo o nome "Pedro".
