@@ -1,0 +1,1 @@
+Os encapsulamentos são usados com o intuito de simplificar o uso do código por terceiros, deixando visível somente o necessário para o seu uso.
