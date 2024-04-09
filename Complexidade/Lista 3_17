@@ -1,9 +1,9 @@
 Pior caso:
 
-for(i=0; i<N; i++) // 2+N
+for(i=0; i<N; i++) // 1+N+N
   printf("%d", i); // N
 
-= 2N+2. Portanto, O(n).
+= 3N+2. Portanto, O(n).
 
 Melhor caso:
 
