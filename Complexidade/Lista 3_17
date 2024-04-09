@@ -1,13 +1,13 @@
 Pior caso:
 
-for(i=0; i<N; i++) // 1+N
+for(i=0; i<N; i++) // 2+N
   printf("%d", i); // N
 
-= 2N+1. Portanto, O(n).
+= 2N+2. Portanto, O(n).
 
 Melhor caso:
 
-for(i=0; i<N; i++) // 1+1
+for(i=0; i<N; i++) // 1+1+1
   printf("%d", i); // 1
 
-= 3. Portanto, Ω(3).
+= 4. Portanto, Ω(4).
