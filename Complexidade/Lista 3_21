@@ -1,0 +1,15 @@
+Pior caso:
+
+for (i=1; i<=N; i=2i){ \\ 1+log2(N)+log2(N)
+printf (”%d”, i); \\ log2(N)
+}
+
+= 3log2(N)+1. Portanto, O(logN).
+
+Melhor caso:
+
+for (i=1; i<=N; i=2i){ \\ 1+1+1
+printf (”%d”, i); \\ 1
+}
+
+= 4. Portanto, Ω(4).
