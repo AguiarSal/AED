@@ -1,0 +1,13 @@
+Pior caso:
+
+for(i=0; i<N; i=i+2) // 2+N/2
+printf("%d", i); // N/2
+
+= 2+N/2+N/2 = N+2. Portanto, O(n).
+
+Melhor caso:
+
+for(i=0; i<N; i=i+2) // 1+1
+printf("%d", i); // 1
+
+= 3. Portanto, Ω(3).
