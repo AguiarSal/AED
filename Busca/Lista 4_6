@@ -1,0 +1,116 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class vetor
+{
+protected:
+    int Tamanho;
+    int val;
+public:
+    int pesqsent(int val);
+    int pesqbin(int val);
+    int pesqseq(int val);
+        int getTamanho(){return Tamanho;}
+        void setTamanho(){
+            cout<<"Qual o tamanho do vetor que voce deseja?\n";
+            cin>>Tamanho;
+        }
+        int getVal(){return val;}
+        void setVal(){
+            cout<<"Determine qual elemento procura dentro do vetor.\n";
+            cin>>val;
+        }
+};
+
+int vetor::pesqsent(int val){
+    
+    int v[Tamanho+1];
+    int Pesquisa1=1;
+    v[Tamanho]=val;
+    
+    for(int i=0; i<Tamanho; i++)
+    {
+        v[i]=i+1;
+    }
+    int i=0;
+    while(v[i]!=val)
+    {
+        i++;
+        Pesquisa1++;
+    }
+    if(i!=Tamanho)
+    {
+        cout<<"A quantidade de pesquisas para sentinela foi: ";
+        return Pesquisa1;
+    }
+    "\nNão houve pesquisa para buscas linear com sentinela.\n";
+    return -1;
+}
+
+int vetor::pesqbin(int val){
+    int v[Tamanho+1];
+    int Pesquisa2=0;
+    for(int i=0; i<=Tamanho; i++)
+    {
+        v[i]=i+1;
+    }
+    int L = 0;
+    int R = Tamanho;
+    int m = 0;
+    
+    while(L<R)
+    {
+        m=(L+R)/2;
+        if(v[m]<val)
+        {
+            L=m+1;
+        }
+        else
+        {
+            R=m;
+        }
+        if(v[m]==val)
+        {
+            cout<<"\nA quantidade de pesquisas para a busca binária foi: ";
+            return Pesquisa2;
+        }
+        Pesquisa2++;
+    }
+    cout<<"\nNão houve pesquisas para busca binária.\n";
+    return -1;
+}
+
+int vetor::pesqseq(int val) {
+    int v[Tamanho];
+    int Pesquisa3 = 1;
+    for(int i=0; i<Tamanho; i++) {
+        v[i]=i+1;
+    }
+
+    for(int i=0; i<Tamanho; i++){
+        if(v[i] == val){
+            cout << "\nA quantidade de pesquisas em uma busca sequencial é de: ";
+            return Pesquisa3;
+        }
+        Pesquisa3++;
+    }
+    cout<<"\nNão houve pesquisas para busca sequencial.";
+    return -1;
+}
+
+
+
+int main()
+{
+    vetor Vet;
+    Vet.setTamanho();
+    Vet.setVal();
+    int val=Vet.getVal();
+    cout<<Vet.pesqsent(val);
+    cout<<Vet.pesqbin(val);
+    cout<<Vet.pesqseq(val);
+
+    return 0;
+}
+
