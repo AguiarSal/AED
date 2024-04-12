@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n=0;
+    while(n<=0){
+    cout<<"Preencha um tamanho maior que 0 para o vetor.\n";
+    cin>>n;
+    }
+    int V[n];
+    int m=0;
+    int pos=0;
+    for(int i=0; i<n; i++)
+    {
+        cout<<"Preencha o valor da posicao "<<i<<" do vetor.\n";
+        cin>>V[i];
+        if(i==0)
+        {
+            m=V[i];
+        }
+        if(V[i]<m)
+        {
+            m=V[i];
+            pos=i;
+        }
+    }
+    cout<<"O menor valor do vetor é "<<m<<" e ele fica na posicao "<<pos<<".";
+    
+
+    return 0;
+}
