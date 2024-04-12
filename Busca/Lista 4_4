@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class vetor
+{
+protected:
+    int Tamanho;
+    int val;
+public:
+    int pesqbin(int val);
+        int getTamanho(){return Tamanho;}
+        void setTamanho(){
+            cout<<"Qual o tamanho do vetor que voce deseja?\n";
+            cin>>Tamanho;
+        }
+        int getVal(){return val;}
+        void setVal(){
+            cout<<"Determine qual elemento procura dentro do vetor.\n";
+            cin>>val;
+        }
+};
+
+int vetor::pesqbin(int val){
+    int v[Tamanho+1];
+    for(int i=0; i<=Tamanho; i++)
+    {
+        v[i]=i+1;
+    }
+    int L = 0;
+    int R = Tamanho;
+    int m = 0;
+    
+    while(L<R)
+    {
+        m=(L+R)/2;
+        if(v[m]<val)
+        {
+            L=m+1;
+        }
+        else
+        {
+            R=m;
+        }
+        if(v[m]==val)
+        {
+            cout<<"O seu vetor está na posicao ";
+            return R;
+        }
+    }
+    
+    return -1;
+}
+
+int main()
+{
+    vetor Vet;
+    Vet.setTamanho();
+    Vet.setVal();
+    int val=Vet.getVal();
+    cout<<Vet.pesqbin(val);
+
+    return 0;
+}
+
