@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class vetor
+{
+protected:
+    int Tamanho;
+    int val;
+public:
+    int pesqsent(int val);
+        int getTamanho(){return Tamanho;}
+        void setTamanho(){
+            cout<<"Qual o tamanho do vetor que voce deseja?\n";
+            cin>>Tamanho;
+        }
+        int getVal(){return val;}
+        void setVal(){
+            cout<<"Determine qual elemento procura dentro do vetor.\n";
+            cin>>val;
+        }
+};
+
+int vetor::pesqsent(int val){
+    
+    int v[Tamanho+1];
+    
+    v[Tamanho]=val;
+    
+    for(int i=0; i<Tamanho; i++)
+    {
+        v[i]=i+1;
+    }
+    int i=0;
+    while(v[i]!=val)
+    {
+        i++;
+    }
+    if(i!=Tamanho)
+    {
+        cout<<"O valor desejado foi encontrado na posicao: ";
+        return i;
+    }
+    "O valor não foi encontrado.\n";
+    return -1;
+}
+
+int main()
+{
+    vetor Vet;
+    Vet.setTamanho();
+    Vet.setVal();
+    int val=Vet.getVal();
+    cout<<Vet.pesqsent(val);
+
+    return 0;
+}
+
