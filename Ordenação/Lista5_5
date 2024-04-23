@@ -1,0 +1,50 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    int n;
+    int i, j;
+    int menor;
+    
+    while(n<=0)
+    {
+        cout<<"Insira a quantidade de nomes desejados.\n";
+        cin>>n;
+        if(n<=0)
+        {
+            cout<<"Por favor, insira um número maior que 0.\n";
+        }
+    }
+    
+    string nomes[n];
+    
+    for(i=0; i<n; i++)
+    {
+        cout<<"Preencha o nome "<<i+1<<".\n";
+        cin>>nomes[i];
+    }
+    
+    
+    for(i=0; i<n-1; i++)
+    {
+        menor=i;
+        for(j=i+1; j<n; j++)
+        {
+            if(nomes[j].size()<nomes[i].size())
+            {
+                menor=j;
+            }
+        }
+        swap(nomes[i], nomes[menor]);
+    }
+    cout<<"\nOs nomes ordenados por tamanho ficam: \n";
+    for(i=0; i<n; i++)
+    {
+        cout<<nomes[i]<<endl;
+    }
+
+    return 0;
+}
+
