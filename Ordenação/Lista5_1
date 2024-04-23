@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    int i;
+    
+    while(n<=0)
+    {
+        cout<<"Insira a quantidade de nomes desejados.\n";
+        cin>>n;
+        if(n<=0)
+        {
+            cout<<"Por favor, escreva um número maior que 0.\n";
+        }
+    }
+    
+    string nomes[n];
+    
+    for(i=0; i<n; i++)
+    {
+        cout<<"Insira o nome "<<i+1<<".\n";
+        cin>>nomes[i];
+    }
+    
+    string chave; 
+    int a, b;
+    
+    for(a=1; a<n; a++)
+    {
+        chave=nomes[a];
+        b=a-1;
+        while(b>=0&&nomes[b]>chave)
+        {
+            nomes[b+1]=nomes[b];
+            b=b-1;
+        }
+        nomes[b+1]=chave;
+    }
+    cout<<endl;
+    int j;
+    for(j=0; j<n; j++)
+    {
+        cout<<nomes[j]<<endl;
+    }
+
+    return 0;
+}
+
