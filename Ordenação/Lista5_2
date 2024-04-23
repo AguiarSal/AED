@@ -1,0 +1,42 @@
+using namespace std;
+#include <iostream>
+#include <string>
+
+int partition(string& pal, int ini, int fim)
+{
+    char pivo=pal[fim];
+    int i=ini-1;
+    for(int j=ini; j<=fim-1; j++)
+    {
+        if(pal[j]>=pivo)
+        {
+            i++;
+            swap(pal[i], pal[j]);
+        }
+    }
+    swap(pal[i+1], pal[fim]);
+    return i+1;
+}
+
+void quicksort(string& pal, int ini, int fim)
+{
+    if(ini<fim)
+    {
+        int q=partition(pal, ini, fim);
+        quicksort(pal, ini, q-1);
+        quicksort(pal, q+1, fim);
+    }
+}
+
+int main()
+{
+    string palavra; 
+    cout<<"Escreva uma palavra."<<endl;
+    cin>>palavra;
+    
+    quicksort(palavra, 0, palavra.length()-1);
+
+    cout<<"A palavra em ordem decrescente fica: "<<palavra;
+    
+    return 0;
+}
