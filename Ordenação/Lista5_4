@@ -1,0 +1,44 @@
+#include <iostream>
+#include <iomanip>
+#include <time.h>
+#include <stdlib.h>
+using namespace std;
+
+int main()
+{
+    int i;
+    float altura[100];
+
+    srand(time(NULL));
+    
+    for(i=0; i<100; i++)
+    {
+        altura[i]=1.01+(rand()%200/100.0);
+    }
+    
+    for(i=0; i<100; i++)
+    {
+        cout<<fixed<<setprecision(2)<<altura[i]<<endl;
+    }
+
+    int continuar=1;
+    while(continuar==1)
+    {
+        continuar=0;
+        for(i=0; i<99; i++)
+        {
+            if(altura[i]>altura[i+1])
+            {
+                swap(altura[i], altura[i+1]);
+                continuar=1;
+            }
+        }
+    }
+    cout<<"\nAs alturas ordenadas ficam: \n";
+    
+    for(i=0; i<100; i++)
+    {
+        cout<<fixed<<setprecision(2)<<altura[i]<<endl;
+    }
+    return 0;
+}
