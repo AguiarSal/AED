@@ -1,0 +1,124 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Node
+{
+public:
+    char data;
+    Node* next;
+    
+    Node(char val){
+        data = val;
+        next = NULL;
+    }
+};
+
+class Pilha
+{
+private:
+    Node* topo;
+    
+public:
+    Pilha(){
+        topo = NULL;
+    }
+
+    bool Vazio();
+    void Empurrar(char item);
+    char Pop();
+    void PrintInverso();
+    bool Palindromo();
+    
+};
+
+bool Pilha::Vazio()
+{
+    return topo == NULL;
+}
+
+void Pilha::Empurrar(char item)
+{
+        Node* novoNode = new Node(item);
+        novoNode->next = topo;
+        topo = novoNode;
+}
+
+char Pilha::Pop()
+{
+    if(Vazio())
+    {
+        cout<<"underflow"<<endl;
+        return '\0';
+    }
+    else
+    {
+        char val = topo->data;
+        Node* temp = topo;
+        topo = topo->next;
+        delete temp;
+        return val;
+    }
+}
+
+void Pilha::PrintInverso() // função responsável por imprimir ao contrário
+{
+    if(Vazio())
+    {
+        cout<<"Pilha vazia."<<endl;
+        return;
+    }
+    string palavra; 
+    Node* temp = topo;
+    while(temp != NULL)
+    {
+        cout<<temp->data<<" ";
+        temp = temp->next;
+    }
+}
+
+bool Pilha::Palindromo() // função que verifica se a palavra contida na pilha é um palíndromo
+{
+    Node* temp = topo;
+    Pilha AuxPilha;
+    
+    while(temp != NULL)
+    {
+        AuxPilha.Empurrar(temp->data);
+        temp=temp->next;
+    }
+    
+    temp=topo;
+    
+    while(temp != NULL)
+    {
+        if(temp->data!=AuxPilha.Pop())
+        {
+            return false;
+        }
+        temp=temp->next;
+    }
+    return true;
+}
+
+
+int main()
+{
+    Pilha pilha;
+    
+    pilha.Empurrar('P');
+    pilha.Empurrar('a');
+    pilha.Empurrar('d');
+    pilha.Empurrar('m');
+    pilha.Empurrar('e');
+    pilha.Empurrar('4');
+    
+    pilha.PrintInverso();
+    
+    cout<<endl<<pilha.Palindromo();
+    
+    return 0;
+}
+
+
+
