@@ -1,0 +1,139 @@
+#include <iostream>
+#include <string>
+using namespace std;
+#define tamanho 4
+
+class Aviao
+{
+private:
+    string  Nome;
+    float   Carga;
+    int     CapacidadeDePessoas;
+    string  Empresa;
+    bool    Militar;
+    
+public:
+    Aviao(){
+        Nome                = "";
+        Carga               = 0;
+        CapacidadeDePessoas = 0;
+        Empresa             = "";
+        Militar             = false;
+    }
+    
+    Aviao(string Nom, float Carg, int CapDePes, string Emp, bool Mil){
+        Nome                = Nom;
+        Carga               = Carg;
+        CapacidadeDePessoas = CapDePes;
+        Empresa             = Emp;
+        Militar             = Mil;
+    }
+    
+    string GetNome(){
+        return Nome;
+    }
+    
+    string GetMil(){
+        if(Militar)
+        {
+            return "militar";
+        }
+        else
+        {
+            return "nao militar";
+        }
+    }
+    
+    void Caracteristicas(){
+        cout<<Nome<<", "<<Carga<<"Kg(s), "<<CapacidadeDePessoas<<" Pessoa(s), "<<Empresa<<", "<<GetMil()<<".\n";
+    }
+
+};
+
+class FilaDeAvioes
+{
+private:
+    int Cabeca;
+    int Calda;
+    Aviao Fila[tamanho];
+    
+public:
+
+    FilaDeAvioes() : Cabeca(0), Calda(0) {}
+
+    void AdicionarAviao(Aviao aviao){ // função que adiciona um avião ao final da fila
+        Fila[Calda] = aviao;
+        if(Calda == tamanho - 1)
+        {
+            Calda = 0;
+        }
+        else
+        {
+            Calda = (Calda + 1) % tamanho;
+        }
+    }
+    
+    Aviao AutorizarDecolagem(){ // função que autoriza a decolagem do primeiro da fila
+        Aviao X = Fila[Cabeca];
+        if(Cabeca == tamanho - 1)
+        {
+            Cabeca = 0;
+        }
+        else
+        {
+            Cabeca = (Cabeca + 1) % tamanho;
+        }
+        return X;
+    }
+    
+    void Listar(){ // função que lista todos os aviões da fila
+        int elementos = ListarQuantidade();
+        if (elementos == 0) {
+            cout << "Fila vazia." << endl;
+            return;
+        }
+        int aux = Cabeca;
+        for (int i = 0; i < elementos; i++) {
+            cout << Fila[aux].GetNome() << " ";
+            aux = (aux + 1) % tamanho;
+        }
+        cout << endl;
+    }
+
+
+    
+    int ListarQuantidade(){ // função que lista a quantidade de aviões na fila
+        return (Calda - Cabeca + tamanho) % tamanho;
+    }
+
+    void CaracPrimeiro(){ // função que lista as características do primeiro avião
+        Fila[Cabeca].Caracteristicas();
+    }
+
+};
+
+int main()
+{
+    Aviao aviao1("Aviao1", 560.5, 150, "Boeing", false);
+    Aviao aviao2("Aviao2", 200.0, 20, "SAAS", true);
+    
+    FilaDeAvioes Fila;
+    
+    Fila.AdicionarAviao(aviao1);
+    Fila.AdicionarAviao(aviao2);
+    
+    cout<<Fila.ListarQuantidade()<<endl;
+    Fila.Listar();
+    Fila.CaracPrimeiro();
+    
+    Fila.AutorizarDecolagem();
+    Fila.Listar();
+    
+    Fila.CaracPrimeiro();
+
+    return 0;
+}
+
+
+
+
