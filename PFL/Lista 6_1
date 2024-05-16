@@ -1,0 +1,175 @@
+#include <iostream>
+using namespace std;
+
+class No
+{
+public:
+    int data;
+    No* next;
+    
+    No(){
+        data = 0;
+        next = nullptr;
+    }
+    
+    No(int valor){
+        data = valor;
+        next = nullptr;
+    }
+};
+
+class ListaEncadeada
+{
+public:
+    No* cabeca;
+    
+    ListaEncadeada(){
+        cabeca = nullptr;
+    }
+
+    void AdicionarNo(int valor){
+        No* NovoNo = new No(valor);
+        
+        if(cabeca==nullptr)
+        {
+            cabeca = NovoNo;
+            return;
+        }
+        else
+        {
+            NovoNo->next = cabeca;
+            cabeca = NovoNo;
+        }
+    }
+    
+    void InserirNo(int pos, int valor){
+        No* anterior = nullptr;
+        No* atual = cabeca;
+        No* NovoNo = new No(valor);
+        
+        for(int i=0; i<pos; i++)
+        {
+            anterior = atual;
+            atual = atual->next;
+            if(atual == nullptr && i<pos)
+            {
+                cout<<"Posicao fora do tamanho da lista."<<endl;
+                return;
+            }
+        }
+        
+        NovoNo->next = atual;
+        anterior->next = NovoNo;
+    }
+    
+    void MostrarLista(){
+        if(cabeca == nullptr)
+        {
+            cout<<"A lista esta vazia."<<endl;
+            return;
+        }
+        
+        No* temp = cabeca;
+        while(temp!=nullptr)
+        {
+            cout<<temp->data<<" ";
+            temp = temp->next;
+        }
+        cout<<endl;
+    }
+    
+    string VerificarOrdenacao(){ //função que verifica a ordenação das listas
+        if(cabeca == nullptr || cabeca->next == nullptr)
+        {
+            return "Esta ordenada";
+        }
+        
+        No* atual = cabeca;
+        while(atual->next != nullptr)
+        {
+            if(atual->data > atual->next->data)
+            {
+                return "Nao esta ordenada.";
+            }
+            atual = atual->next;
+        }
+        return "Esta ordenada";
+    }
+    
+    void OrdenarLista(){ // função que ordena as listas
+        for(No* atual = cabeca; atual != nullptr; atual = atual->next)
+        {
+            for(No* tempNo = atual->next; tempNo != nullptr; tempNo = tempNo->next)
+            {
+                if(tempNo->data < atual->data)
+                {
+                    int tempData = atual->data;
+                    atual->data = tempNo->data;
+                    tempNo->data = tempData;
+                }
+            }
+        }
+    }
+    
+};
+
+ListaEncadeada MesclarListas(ListaEncadeada& Lista1, ListaEncadeada& Lista2) // função que mescla as duas listas
+    {
+        No* atual1 = Lista1.cabeca;
+        No* atual2 = Lista2.cabeca;
+        
+        ListaEncadeada ListaMesclada;
+        
+        for(; atual1 != nullptr; atual1 = atual1->next)
+        {
+            ListaMesclada.AdicionarNo(atual1->data);
+        }
+        for(; atual2 != nullptr; atual2 = atual2->next)
+        {
+            ListaMesclada.AdicionarNo(atual2->data);
+        }
+        
+        return ListaMesclada;
+    }
+
+int main()
+{
+    ListaEncadeada Lista1;
+    ListaEncadeada Lista2;
+    
+    Lista1.AdicionarNo(2);
+    Lista1.AdicionarNo(4);
+    Lista1.AdicionarNo(6);
+    
+    Lista2.AdicionarNo(7);
+    Lista2.AdicionarNo(6);
+    Lista2.AdicionarNo(8);
+    
+    cout<<"Antes de ordenar:"<<endl;
+    Lista1.MostrarLista();
+    Lista2.MostrarLista();
+    
+    cout<<Lista1.VerificarOrdenacao()<<endl;
+    cout<<Lista2.VerificarOrdenacao()<<endl;
+    
+    Lista1.OrdenarLista();
+    Lista2.OrdenarLista();
+    
+    cout<<"Apos a ordenacao:"<<endl;
+    Lista1.MostrarLista();
+    Lista2.MostrarLista();
+
+    ListaEncadeada ListaMesclada = MesclarListas(Lista1, Lista2);
+    
+    cout<<"Lista mesclada antes da ordenacao:"<<endl;
+    ListaMesclada.MostrarLista();
+    
+    ListaMesclada.OrdenarLista();
+    
+    cout<<"Lista mesclada apos a ordanacao:"<<endl;
+    ListaMesclada.MostrarLista();
+
+    return 0;
+}
+
+
